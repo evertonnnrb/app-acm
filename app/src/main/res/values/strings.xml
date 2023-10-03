@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">ACM</string>
+    <string name="text_email">Email</string>
+    <string name="text_password">password</string>
+    <string name="text_login">LOGIN</string>
+    <string name="this_field_is_required">This field is required</string>
+    <string name="text_logout">LOGOUT</string>
+</resources>
