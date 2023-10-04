@@ -9,4 +9,7 @@
     <string name="buy">Buy</string>
     <string name="settings">Settings</string>
     <string name="about">About</string>
+    <string name="personalize_options">Personalize options</string>
+    <string name="send_me_notifications">Send me notifications</string>
+    <string name="save_data_on_sd_card">Save data on SD card</string>
 </resources>

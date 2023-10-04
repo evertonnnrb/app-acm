@@ -4,4 +4,5 @@
     <dimen name="_64dp">64dp</dimen>
     <dimen name="_200dp_image_view_user">200dp</dimen>
     <dimen name="_16dp">16dp</dimen>
+    <dimen name="_24sp">24sp</dimen>
 </resources>
