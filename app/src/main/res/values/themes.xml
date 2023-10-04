@@ -4,8 +4,8 @@
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
-
-    <style name="Theme.ACM" parent="Base.Theme.ACM" />
+    <!--Base.Theme.ACM-->
+    <style name="Theme.ACM" parent="Theme.Design.NoActionBar" />
 
     <style name="RaisedButton" parent="Widget.AppCompat.Button.Colored">
         <item name="backgroundTint">@color/primaryAccent</item>
@@ -16,4 +16,9 @@
     <style name="FlatButtonOffSet" parent="Widget.AppCompat.Button.Borderless">
         <item name="android:textColor">@color/linkButton</item>
     </style>
+      
+    <style name="popupMenuHiden" parent="ThemeOverlay.AppCompat.Light">
+        <item name="background">@android:color/white</item>
+    </style>
+
 </resources>
