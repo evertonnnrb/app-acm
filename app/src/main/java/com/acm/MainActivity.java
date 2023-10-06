@@ -1,13 +1,17 @@
 package com.acm;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -16,6 +20,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 public class MainActivity extends AppCompatActivity {
 
     private Toolbar myToolbar;
+    private Button btnLogout;
     private FloatingActionButton fab;
 
     @Override
@@ -26,10 +31,29 @@ public class MainActivity extends AppCompatActivity {
         myToolbar = findViewById(R.id.myToolBar);
         setSupportActionBar(myToolbar);
 
+        btnLogout = findViewById(R.id.btnLogout);
+        btnLogout.setOnClickListener(e -> {
+
+            callLogout(this);
+        });
+
         fab = findViewById(R.id.fabAdd);
         fab.setOnClickListener(e -> {
             Toast.makeText(this, "Clicked", Toast.LENGTH_SHORT).show();
         });
+    }
+
+    private void callLogout(Context context) {
+        AlertDialog.Builder dialog = new AlertDialog.Builder(context);
+        dialog.setTitle("Are you shure?");
+        dialog.setMessage("Do you want leave?");
+        dialog.setPositiveButton("Yes", (dialogInterface, i) -> {
+            onDestroy();
+        });
+        dialog.setNegativeButton("No", (dialogInterface, i) -> {
+
+        });
+        dialog.show();
     }
 
     @Override
