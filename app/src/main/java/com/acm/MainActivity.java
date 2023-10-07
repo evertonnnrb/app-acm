@@ -1,13 +1,13 @@
 package com.acm;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -15,26 +15,34 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.acm.model.User;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class MainActivity extends AppCompatActivity {
 
+    private User user;
     private Toolbar myToolbar;
     private Button btnLogout;
     private FloatingActionButton fab;
+
+    private TextView txtEmailUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        user = (User) getIntent().getSerializableExtra("user");
+
         myToolbar = findViewById(R.id.myToolBar);
         setSupportActionBar(myToolbar);
 
+        txtEmailUser = findViewById(R.id.txtEmailUser);
+        txtEmailUser.setText(getString(R.string._id) + user.getEmail());
+
         btnLogout = findViewById(R.id.btnLogout);
         btnLogout.setOnClickListener(e -> {
-
-            callLogout(this);
+            callLogout(this).show();
         });
 
         fab = findViewById(R.id.fabAdd);
@@ -43,17 +51,18 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void callLogout(Context context) {
-        AlertDialog.Builder dialog = new AlertDialog.Builder(context);
+    private AlertDialog callLogout(Context context) {
+        AlertDialog.Builder dialog = new AlertDialog.Builder(context, R.style.AlertDialog);
         dialog.setTitle("Are you shure?");
         dialog.setMessage("Do you want leave?");
         dialog.setPositiveButton("Yes", (dialogInterface, i) -> {
-            onDestroy();
+            finish();
         });
         dialog.setNegativeButton("No", (dialogInterface, i) -> {
 
         });
-        dialog.show();
+
+        return dialog.create();
     }
 
     @Override

@@ -20,5 +20,9 @@
     <style name="popupMenuHiden" parent="ThemeOverlay.AppCompat.Light">
         <item name="background">@android:color/white</item>
     </style>
+    
+    <style name="AlertDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="colorAccent">#0000FF</item>
+    </style>
 
 </resources>

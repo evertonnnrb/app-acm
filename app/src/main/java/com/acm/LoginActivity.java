@@ -4,18 +4,23 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.acm.model.User;
+import com.acm.util.UtilMockUsers;
+
 public class LoginActivity extends AppCompatActivity {
 
+    private User user;
     private ImageView imageViewUserLogin;
     private EditText edtLoginEmail, edtLoginPassword;
     private Button buttonLogin;
     private CheckBox checkBoxKeepMeConnected;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,11 +35,25 @@ public class LoginActivity extends AppCompatActivity {
         buttonLogin = findViewById(R.id.btnLogin);
         buttonLogin.setOnClickListener(e -> {
             if (validateEmptyEditText(edtLoginEmail) && validateEmptyEditText(edtLoginPassword)) {
-                Intent intent = new Intent(this, MainActivity.class);
-                startActivity(intent);
+                if (effectLogin()) {
+                    Intent intent = new Intent(this, MainActivity.class);
+                    intent.putExtra("user",user);
+                    startActivity(intent);
+                    finish();
+                }
             }
         });
 
+    }
+
+    private boolean effectLogin() {
+        user = new User(edtLoginEmail.getText().toString(), edtLoginPassword.getText().toString());
+        if (UtilMockUsers.getUsers().contains(user)) {
+            Toast.makeText(this, "Valido", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+        Toast.makeText(this, "Inválido", Toast.LENGTH_SHORT).show();
+        return false;
     }
 
     private boolean validateEmptyEditText(EditText editText) {
