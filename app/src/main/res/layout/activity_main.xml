@@ -12,11 +12,11 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="horizontal" android:padding="2dp">
 
         <TextView
             android:id="@+id/txtEmailUser"
-            style="@style/TextAppearance.AppCompat.Medium"
+            style="@style/TextAppearance.AppCompat.Small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_8dp"
@@ -28,7 +28,10 @@
             style="@style/FlatButtonOffSet"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="right"
+            android:layout_marginStart="230dp"
+            android:fontFamily="sans-serif"
+            android:textSize="12sp"
+            android:paddingStart="@dimen/_16dp"
             android:text="@string/text_logout" />
 
     </LinearLayout>
@@ -114,6 +117,7 @@
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
+
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -124,6 +128,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|right"
             android:layout_margin="@dimen/_32dp"
-            app:srcCompat="@drawable/ic_fab" />
+            app:srcCompat="@drawable/ic_add" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </LinearLayout>

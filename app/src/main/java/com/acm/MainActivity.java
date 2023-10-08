@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
         fab = findViewById(R.id.fabAdd);
         fab.setOnClickListener(e -> {
-            Toast.makeText(this, "Clicked", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(this, BudGetActivity.class));
         });
     }
 
@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
             finish();
         });
         dialog.setNegativeButton("No", (dialogInterface, i) -> {
-
+            dismissDialog(0);
         });
 
         return dialog.create();
